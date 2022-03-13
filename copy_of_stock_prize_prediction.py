@@ -836,3 +836,202 @@ score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
 print("Score (RMSE): {}".format(score))
 print('R2 score: %2f' % r2_score(y_test2,pred))
 chart_regression(pred.flatten()[0:100],y_test2[0:100])
+#Preparing x and y
+SEQUENCE_SIZE = 10
+x2,y2 = to_sequences(SEQUENCE_SIZE, df_stock.values, df_stock_close)
+
+print("Shape of x: {}".format(x2.shape))
+print("Shape of y: {}".format(y2.shape))
+
+#Splitting data into 70% training and 30% test set
+x_train2,x_test2,y_train2,y_test2 = train_test_split(x2,y2, test_size=0.3, random_state =42)
+print("Shape of x_train: {}".format(x_train2.shape))
+print("Shape of x_test: {}".format(x_test2.shape))
+print("Shape of y_train: {}".format(y_train2.shape))
+print("Shape of y_test: {}".format(y_test2.shape))
+
+#LSTM neuron: 100
+#Optimization: SGD
+#With drop out layer
+
+#checkpointer
+checkpointer = ModelCheckpoint(filepath="best_weights.hdf5", verbose=0, save_best_only=True) # save best model
+for i in range(5):
+    print(i)    
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(100, dropout=0.1, recurrent_dropout=0.1, input_shape=(SEQUENCE_SIZE, 5)))
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
+    print('Train...')
+    model.fit(x_train2,y_train2,validation_data=(x_test2,y_test2),callbacks=[monitor,checkpointer],verbose=2, epochs=10) 
+model.load_weights('best_weights.hdf5')
+
+pred = model.predict(x_test2)
+score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
+print("Score (RMSE): {}".format(score))
+print('R2 score: %2f' % r2_score(y_test2,pred))
+chart_regression(pred.flatten()[0:100],y_test2[0:100])
+
+#Preparing x and y
+SEQUENCE_SIZE = 25
+x2,y2 = to_sequences(SEQUENCE_SIZE, df_stock.values, df_stock_close)
+
+print("Shape of x: {}".format(x2.shape))
+print("Shape of y: {}".format(y2.shape))
+
+#Splitting data into 70% training and 30% test set
+x_train2,x_test2,y_train2,y_test2 = train_test_split(x2,y2, test_size=0.3, random_state =42)
+print("Shape of x_train: {}".format(x_train2.shape))
+print("Shape of x_test: {}".format(x_test2.shape))
+print("Shape of y_train: {}".format(y_train2.shape))
+print("Shape of y_test: {}".format(y_test2.shape))
+
+#LSTM neuron: 100
+#Optimization: SGD
+#With drop out layer
+
+#checkpointer
+checkpointer = ModelCheckpoint(filepath="best_weights.hdf5", verbose=0, save_best_only=True) # save best model
+for i in range(5):
+    print(i)    
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(100, dropout=0.1, recurrent_dropout=0.1, input_shape=(SEQUENCE_SIZE, 5)))
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
+    print('Train...')
+    model.fit(x_train2,y_train2,validation_data=(x_test2,y_test2),callbacks=[monitor,checkpointer],verbose=2, epochs=10) 
+model.load_weights('best_weights.hdf5')
+
+pred = model.predict(x_test2)
+score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
+print("Score (RMSE): {}".format(score))
+print('R2 score: %2f' % r2_score(y_test2,pred))
+chart_regression(pred.flatten()[0:100],y_test2[0:100])
+
+#Preparing x and y
+SEQUENCE_SIZE = 50
+x2,y2 = to_sequences(SEQUENCE_SIZE, df_stock.values, df_stock_close)
+
+print("Shape of x: {}".format(x2.shape))
+print("Shape of y: {}".format(y2.shape))
+
+#Splitting data into 70% training and 30% test set
+x_train2,x_test2,y_train2,y_test2 = train_test_split(x2,y2, test_size=0.3, random_state =42)
+print("Shape of x_train: {}".format(x_train2.shape))
+print("Shape of x_test: {}".format(x_test2.shape))
+print("Shape of y_train: {}".format(y_train2.shape))
+print("Shape of y_test: {}".format(y_test2.shape))
+
+#LSTM neuron: 100
+#Optimization: SGD
+#With drop out layer
+
+#checkpointer
+checkpointer = ModelCheckpoint(filepath="best_weights.hdf5", verbose=0, save_best_only=True) # save best model
+for i in range(5):
+    print(i)    
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(100, dropout=0.1, recurrent_dropout=0.1, input_shape=(SEQUENCE_SIZE, 5)))
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
+    print('Train...')
+    model.fit(x_train2,y_train2,validation_data=(x_test2,y_test2),callbacks=[monitor,checkpointer],verbose=2, epochs=10) 
+model.load_weights('best_weights.hdf5')
+
+pred = model.predict(x_test2)
+score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
+print("Score (RMSE): {}".format(score))
+print('R2 score: %2f' % r2_score(y_test2,pred))
+chart_regression(pred.flatten()[0:100],y_test2[0:100])
+
+#Preparing x and y
+SEQUENCE_SIZE = 100
+x2,y2 = to_sequences(SEQUENCE_SIZE, df_stock.values, df_stock_close)
+
+print("Shape of x: {}".format(x2.shape))
+print("Shape of y: {}".format(y2.shape))
+
+#Splitting data into 70% training and 30% test set
+x_train2,x_test2,y_train2,y_test2 = train_test_split(x2,y2, test_size=0.3, random_state =42)
+print("Shape of x_train: {}".format(x_train2.shape))
+print("Shape of x_test: {}".format(x_test2.shape))
+print("Shape of y_train: {}".format(y_train2.shape))
+print("Shape of y_test: {}".format(y_test2.shape))
+
+#LSTM neuron: 100
+#Optimization: SGD
+#With drop out layer
+
+#checkpointer
+checkpointer = ModelCheckpoint(filepath="best_weights.hdf5", verbose=0, save_best_only=True) # save best model
+for i in range(5):
+    print(i)    
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(100, dropout=0.1, recurrent_dropout=0.1, input_shape=(SEQUENCE_SIZE, 5)))
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
+    print('Train...')
+    model.fit(x_train2,y_train2,validation_data=(x_test2,y_test2),callbacks=[monitor,checkpointer],verbose=2, epochs=10) 
+model.load_weights('best_weights.hdf5')
+
+pred = model.predict(x_test2)
+score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
+print("Score (RMSE): {}".format(score))
+print('R2 score: %2f' % r2_score(y_test2,pred))
+chart_regression(pred.flatten()[0:100],y_test2[0:100])
+
+#Preparing x and y
+SEQUENCE_SIZE = 2
+x2,y2 = to_sequences(SEQUENCE_SIZE, df_stock.values, df_stock_close)
+
+print("Shape of x: {}".format(x2.shape))
+print("Shape of y: {}".format(y2.shape))
+
+#Splitting data into 70% training and 30% test set
+x_train2,x_test2,y_train2,y_test2 = train_test_split(x2,y2, test_size=0.3, random_state =42)
+print("Shape of x_train: {}".format(x_train2.shape))
+print("Shape of x_test: {}".format(x_test2.shape))
+print("Shape of y_train: {}".format(y_train2.shape))
+print("Shape of y_test: {}".format(y_test2.shape))
+
+#LSTM neuron: 100
+#Optimization: SGD
+#With drop out layer
+
+#checkpointer
+checkpointer = ModelCheckpoint(filepath="best_weights.hdf5", verbose=0, save_best_only=True) # save best model
+for i in range(5):
+    print(i)    
+    print('Build model...')
+    model = Sequential()
+    model.add(LSTM(100, dropout=0.1, recurrent_dropout=0.1, input_shape=(SEQUENCE_SIZE, 5)))
+    model.add(Dense(50))
+    model.add(Dropout(0.1))
+    model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=5, verbose=1, mode='auto')
+    print('Train...')
+    model.fit(x_train2,y_train2,validation_data=(x_test2,y_test2),callbacks=[monitor,checkpointer],verbose=2, epochs=10) 
+model.load_weights('best_weights.hdf5')
+
+pred = model.predict(x_test2)
+score = np.sqrt(metrics.mean_squared_error(pred,y_test2))
+print("Score (RMSE): {}".format(score))
+print('R2 score: %2f' % r2_score(y_test2,pred))
+chart_regression(pred.flatten()[0:100],y_test2[0:100])
