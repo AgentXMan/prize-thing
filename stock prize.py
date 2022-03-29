@@ -50,3 +50,17 @@ top_corelated_values = get_corelated_col(cormap['Close'], 0.60)
 top_corelated_values
 #all colums except volume are highly co-related. Using them for predictions.
 
+
+df.shape #(number of rows, number of columns)
+
+#checking out different graphs and pairplot plots pairwise relationships in a dataset 
+sns.pairplot(df)
+plt.tight_layout()
+
+#Since other parameters have linear relationship with Close, we are using some linear models fore prediction
+
+#.drop() drops the specified labels from rows and columns
+X = df.drop(['Close'], axis=1)
+y = df['Close']
+
+#Since range of data in different columns veries significantly we need to scale the independent variable i.e. X. For this we will use Min-Max Scaling.
