@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-data = pd.read_csv("yahoo_stock (1) (1).xls")
+data = pd.read_csv("yahoo_stock (1) (1).csv")
 df = pd.DataFrame(data) #makes a spreadsheet and then stores it
 
 
