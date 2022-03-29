@@ -48,5 +48,5 @@ def get_corelated_col(cor_dat, threshold):
 #getting corelated values
 top_corelated_values = get_corelated_col(cormap['Close'], 0.60)
 top_corelated_values
-
+#all colums except volume are highly co-related. Using them for predictions.
 
