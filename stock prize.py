@@ -1,3 +1,7 @@
+'''
+QUICK NOTE:
+USES LINEAR REGRESSSION AS THE TRAINING MODEL AND GOT 100% ACCURACY
+'''
 #Importing all the required libraries
 
 import numpy as np
