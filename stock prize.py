@@ -64,3 +64,10 @@ X = df.drop(['Close'], axis=1)
 y = df['Close']
 
 #Since range of data in different columns veries significantly we need to scale the independent variable i.e. X. For this we will use Min-Max Scaling.
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+X = pd.DataFrame(scaler.fit_transform(X), columns=X.columns)
+X.head()
+
+
