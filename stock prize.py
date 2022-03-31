@@ -23,7 +23,7 @@ df.describe()
 
  
 '''
-showing column wise %ge of NaN values they contains 
+showing column wise % of NaN values they contains 
 looping through the columns from the csv file and then detects the missing values (NAN)
 Since there is no null valus, we can move further
 (data preprocessing and cleaning)
