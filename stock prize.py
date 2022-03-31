@@ -26,6 +26,7 @@ df.describe()
 showing column wise %ge of NaN values they contains 
 looping through the columns from the csv file and then detects the missing values (NAN)
 Since there is no null valus, we can move further
+(data preprocessing and cleaning)
 '''
 for i in df.columns:
   print(i,"\t-\t", df[i].isna().mean()*100)
